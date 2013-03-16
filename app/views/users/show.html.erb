@@ -1,0 +1,26 @@
+<div class='container'>
+   <h1>Users Listing:</h1>
+  <%=  will_paginate @users %>
+
+    <table class='table table-bordered'>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+
+      <% @users.each do |u| %>
+        <tr>
+          <td><%= u.id %></td>
+          <td><%= u.login %></td>
+          <td><%=  link_to "Edit", edit_user_path(u) if logged_user?(u) %></td>                 <!-- refactor this, do i really need logic here? -->
+          <td><%=  link_to "Delete", user_path(u), method: 'delete' if logged_user?(u)%></td>   <!-- same as above -->
+        </tr>
+       <% end %>
+
+      <div id="edit" onclick="this.style.backgroundColor='#990000'">asd</div>
+    </table>
+  <%=  will_paginate @users %>
+    <%= link_to 'New user', register_path, :class => 'btn btn-primary' %>
+</div>
