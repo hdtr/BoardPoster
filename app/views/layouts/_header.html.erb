@@ -8,7 +8,7 @@
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "Help", help_path %></li>
           <% if logged_in? %>
-            <li><%=  "Hello #{logged_user.login}" %></li>
+            <li><a><%=  "Hello #{logged_user.login}" %></a></li>
             <li><%= link_to "Users", users_path %></li>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
