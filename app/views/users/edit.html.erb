@@ -2,9 +2,16 @@
 <h1>Edit your profile:</h1>
   <div class= 'slick-login'>
     <%= form_for @user do |f| %>
-        <%= f.text_field :login, placeholder: 'new login' %><br />
-        <%= f.password_field :password, placeholder: 'new password' %><br />
-        <%= f.password_field :password_confirmation, placeholder: 'confirm new password' %><br />
+        <%=  label_tag 'Login' %>
+        <%= f.text_field :login, placeholder: 'new login' %>
+        <%=  label_tag 'Email address' %>
+        <%= f.text_field :email, placeholder: 'email' %>
+        <%=  label_tag 'Confirm email' %>
+        <%= f.text_field :email_confirmation, placeholder: 'confirm email' %>
+        <%=  label_tag 'New password (min length 5 signs)' %>
+        <%= f.password_field :password, placeholder: 'new password' %>
+        <%=  label_tag 'Confirm password' %>
+        <%= f.password_field :password_confirmation, placeholder: 'confirm new password' %>
         <%= f.submit "Save" %>
     <% end %>
   </div>

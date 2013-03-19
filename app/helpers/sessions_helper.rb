@@ -1,5 +1,7 @@
 module SessionsHelper
 
+  include Rack::Recaptcha::Helpers
+
   def log_in(user)
     cookies.permanent[:token] = user.token
     self.logged_user = user
@@ -27,7 +29,12 @@ module SessionsHelper
   end
 
   def visited_page
+    #TODO store visited link
     root_path
+  end
+
+  def confirmed_email?
+    @user ? @user.confirmed : false
   end
 
 end

@@ -1,5 +1,4 @@
 <% provide(:title, 'Login')%>
-
 <%= image_tag('logo.png', size: '700x50') %>
 <%= form_for(:session, url: sessions_path, html: { class: 'slick-login'} ) do |f| %>
     <%=  label_tag 'Login' %>
@@ -9,7 +8,6 @@
     <%= f.submit "Log in" %>
 
 <% end %>
-<!--TODO correct register button styling -->
 <div class='slick-register-front'>
 <%= button_to "Register", register_path %>
 </div>

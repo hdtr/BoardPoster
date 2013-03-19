@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315173105) do
+ActiveRecord::Schema.define(:version => 20130319123710) do
 
   create_table "payloads", :force => true do |t|
     t.string   "login"
@@ -27,9 +27,12 @@ ActiveRecord::Schema.define(:version => 20130315173105) do
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "password_hash"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "token"
+    t.string   "email"
+    t.boolean  "confirmed",         :default => false
+    t.string   "confirmation_code"
   end
 
   add_index "users", ["token"], :name => "index_users_on_token"

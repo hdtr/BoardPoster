@@ -58,5 +58,8 @@ module BoardPoster
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.gem 'rack-recaptcha', :lib => 'rack/recaptcha'
+    config.middleware.use Rack::Recaptcha, :public_key => '6LeZlt4SAAAAAB5qYKpSWEAbwwkF5XBpRrjSHURJ', :private_key => '6LeZlt4SAAAAAK7tkyOkZwpkBRpCG-Bd6qormTVe'
   end
 end

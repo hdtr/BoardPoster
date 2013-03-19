@@ -6,6 +6,7 @@
     <tr>
       <th>Id</th>
       <th>Name</th>
+      <th>Email</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -14,9 +15,10 @@
         <tr>
           <td><%= u.id %></td>
           <td><%= u.login %></td>
-          <% if logged_user?(u) %>           <!-- better, but still not what i want, maybe helper would be better? -->
-              <td><%=  link_to "Edit", edit_user_path(u) %></td>    <!-- find some cleaner way of filterng permissions -->
-              <td><%=  link_to "Delete", users_path(u), method: 'delete' %></td>
+          <td><%=  u.email %></td>
+          <% if logged_user?(u) %>
+              <td><%=  link_to "Edit", edit_user_path(u) %></td>
+              <td><%=  link_to "Delete", u, method: :delete, data: { confirm: "You sure?" } %>
           <% else %>
               <td></td>
               <td></td>

@@ -8,6 +8,7 @@ BoardPoster::Application.routes.draw do
   match '/help', to: 'statics#help'
   match '/about', to: 'statics#about'
 
+  match '/:id/:code', to: 'users#verify_email'
   match '/register', to: 'users#new'
 
   match '/login', to: 'sessions#new'

@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '~> 3.0.1'
 gem 'bootstrap-sass', '~> 2.3.0.1'
 gem 'sass', '~> 3.2.7'
 gem 'will_paginate', '~> 3.0.4'
+gem 'rack-recaptcha', :require => 'rack/recaptcha'
 
 # Gems used only for assets and not required
 # in production environments by default.
