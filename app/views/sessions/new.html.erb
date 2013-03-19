@@ -1,22 +1,15 @@
 <% provide(:title, 'Login')%>
 
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(:session, url: sessions_path) do |f| %>
-        <%= f.label :login %>:
-        <%= f.text_field :login %><br />
+<%= image_tag('logo.png', size: '700x50') %>
+<%= form_for(:session, url: sessions_path, html: { class: 'slick-login'} ) do |f| %>
+    <%=  label_tag 'Login' %>
+    <%= f.text_field :login, placeholder: 'login:' %><br />
+    <%=  label_tag 'Password' %>
+    <%= f.password_field :password, placeholder: 'password:' %><br />
+    <%= f.submit "Log in" %>
 
-        <%= f.label :password %>:
-        <%= f.password_field :password %><br />
-
-        <%= f.submit "Log in" %>
-    <% end %>
-
-    <% if flash[:notice] %>
-        <p class="notice"><%= flash[:notice] %></p>
-    <% end %>
-
-    <p>New user? <%= link_to "Register", register_path %></p>
-
-  </div>
+<% end %>
+<!--TODO correct register button styling -->
+<div class='slick-register-front'>
+<%= button_to "Register", register_path %>
 </div>

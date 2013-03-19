@@ -26,4 +26,8 @@ module SessionsHelper
     @logged_user ||= User.find_by_token(cookies[:token])
   end
 
+  def visited_page
+    root_path
+  end
+
 end

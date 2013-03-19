@@ -1,7 +1,30 @@
-<% provide(:title, 'Users list')  %>
-<div class="center hero-unit">
+  <h1>Users Listing:</h1>
+  <p class='pagination rows'>Rows per page: <%= render 'paginationamount' %></p><br />
+  <%=  will_paginate @users, class: 'pagination' %>
 
-    <h1>Hello!</h1>
+  <table class='table'>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
 
-    <%= link_to "Register now!", register_path, class: 'btn btn-large btn-primary' %>
-</div>
+    <% @users.each do |u| %>
+        <tr>
+          <td><%= u.id %></td>
+          <td><%= u.login %></td>
+          <% if logged_user?(u) %>           <!-- better, but still not what i want, maybe helper would be better? -->
+              <td><%=  link_to "Edit", edit_user_path(u) %></td>    <!-- find some cleaner way of filterng permissions -->
+              <td><%=  link_to "Delete", users_path(u), method: 'delete' %></td>
+          <% else %>
+              <td></td>
+              <td></td>
+          <% end %>
+        </tr>
+    <% end %>
+
+  </table>
+  <p class='pagination page-info'><%= page_entries_info @users %></p><br />
+  <%=  will_paginate @users, class: 'pagination'%><br />
+  <p class='pagination rows'>Rows per page: <%= render 'paginationamount' %></p>

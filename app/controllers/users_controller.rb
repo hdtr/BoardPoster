@@ -5,16 +5,18 @@ class UsersController < ApplicationController
     @user.password = params[:user][:password]
     if @user.save
       flash[:notice] = 'Sucessfully registered'
-      redirect_to @user
+      log_in(@user)
+      index
+      render 'index'
     else
       flash[:notice] = "There were some errors: #{@user.errors.full_messages}"
       render 'new'
     end
   end
 
-  def show
-      @user = User.find_by_token(cookies[:token])
-    @users =  User.paginate(page:  params[:page]).order('created_at DESC')
+  def index
+    @user = User.find_by_token(cookies[:token])
+    @users =  User.paginate(page: params[:page], per_page: params[:per_page]).order('created_at DESC')
   end
 
   def new
@@ -32,14 +34,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by_id(params[:id])
-      if valid_user?
-        @user.update_attributes(params[:user])
-        flash[:success] = "Updated"
+      if @user.update_attributes(params[:user])
+        flash[:notice] = "Updated"
         log_in @user
-        redirect_to @user
+        redirect_to users_path
       else
-        flash[:warning] = "You can't edit other user!"
-        redirect_to root_path
+        flash[:error] = "Error! #{@user.errors.full_messages}"
+        redirect_to :back
       end
     end
 

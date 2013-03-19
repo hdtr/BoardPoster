@@ -1,7 +1,6 @@
 BoardPoster::Application.routes.draw do
 
-  root to:  'users#show'
-
+  root to:  'sessions#new'
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

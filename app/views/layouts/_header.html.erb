@@ -1,12 +1,8 @@
-<header>
-<header class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to 'BP', root_path, id: "logo" %>
-      <nav>
+       <%= link_to image_tag('logo.png', size: '350x50'), users_path, id: "logo", class: 'logo' %>
         <ul class="nav pull-right">
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Help", help_path %></li>
           <% if logged_in? %>
             <li><a><%=  "Hello #{logged_user.login}" %></a></li>
             <li><%= link_to "Users", users_path %></li>
@@ -26,8 +22,6 @@
             <li><%= link_to "Sign in", login_path %></li>
           <% end %>
         </ul>
-      </nav>
     </div>
   </div>
-</header>
-</header>
+</div>

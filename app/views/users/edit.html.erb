@@ -1,10 +1,10 @@
 <% provide(:title, 'Edit profile') %>
+<h1>Edit your profile:</h1>
+  <div class= 'slick-login'>
     <%= form_for @user do |f| %>
-        <%= f.label :login %>:
-        <%= f.text_field :login %><br />
-
-        <%= f.label :password %>:
-        <%= f.password_field :password %><br />
-
+        <%= f.text_field :login, placeholder: 'new login' %><br />
+        <%= f.password_field :password, placeholder: 'new password' %><br />
+        <%= f.password_field :password_confirmation, placeholder: 'confirm new password' %><br />
         <%= f.submit "Save" %>
     <% end %>
+  </div>

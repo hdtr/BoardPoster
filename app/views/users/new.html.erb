@@ -1,20 +1,18 @@
-
 <% provide(:title, 'New user')%>
-<%= form_for @user do |f| %>
+<h1>Register new user:</h1>
+<div class='slick-register' >
+<%= form_for @user, url: { action: 'index' } do |f| %>
+    <%=  label_tag 'Login' %>
+    <%= f.text_field :login, placeholder: 'login' %>
+    <%=  label_tag 'Password' %>
+    <%= f.password_field :password, placeholder: 'pasword' %>
+    <%=  label_tag 'Password confirmation' %>
+    <%= f.password_field :password_confirmation, placeholder: 'password confirmation' %>
 
-    <%= f.label :login %>:
-    <%= f.text_field :login %><br />
-
-    <%= f.label :password %>:
-    <%= f.password_field :password %><br />
-
-    <%= f.label :password_confirmation %>:
-    <%= f.password_field :password_confirmation %>
-
-    <%= f.submit "Register", class: "btn btn-large btn-primary" %>
+    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 <% end %>
+  </div>
 
-
-<% if flash[:notice] %>
-    <p class="notice"><%= flash[:notice] %></p>
-<% end %>
+<div class='slick-register-back' >
+<%=  button_to "Go back", login_path %>
+</div>

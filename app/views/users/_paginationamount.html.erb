@@ -1,0 +1,5 @@
+<!-- TODO Add current number selection for styling -->
+<% (1..5).each do |i| %>
+<%=  link_to "#{i*5}", params = { per_page: i*5 } %>
+<% end %>
+

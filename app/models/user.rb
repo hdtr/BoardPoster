@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :login
   validates_presence_of :login
-  validates_length_of :password, :minimum => 1
+  validates_length_of :password_confirmation, :minimum => 5
+  validates_presence_of :password
   validates_confirmation_of :password
 
 
