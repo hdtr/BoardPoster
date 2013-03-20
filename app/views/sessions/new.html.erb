@@ -1,13 +1,11 @@
-<% provide(:title, 'Login')%>
-<%= image_tag('logo.png', size: '700x50') %>
-<%= form_for(:session, url: sessions_path, html: { class: 'slick-login'} ) do |f| %>
-    <%=  label_tag 'Login' %>
-    <%= f.text_field :login, placeholder: 'login:' %><br />
-    <%=  label_tag 'Password' %>
-    <%= f.password_field :password, placeholder: 'password:' %><br />
-    <%= f.submit "Log in" %>
+<% provide(:title, 'Login') %>
+<%= form_for(:session, url: sessions_path, html: {class: 'form-signin white-text'}) do |f| %>
+    <h2 class='form-signin-heading'>Please sign in</h2>
+    <%= label_tag 'Login' %>
+    <%= f.text_field :login, placeholder: 'login:', id: 'session_login', class: 'input-block-level' %><br />
+    <%= label_tag 'Password' %>
+    <%= f.password_field :password, placeholder: 'password:', id: 'session_password', class: 'input-block-level' %><br />
+    <%= f.submit "Log in", class: 'btn btn-large btn-primary' %>
+    <%= f.submit "Register", class: 'btn btn-large btn-primary' %>
 
 <% end %>
-<div class='slick-register-front'>
-<%= button_to "Register", register_path %>
-</div>

@@ -1,27 +1,11 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-       <%= link_to image_tag('logo.png', size: '350x50'), users_path, id: "logo", class: 'logo' %>
-        <ul class="nav pull-right">
-          <% if logged_in? %>
-            <li><a><%=  "Hello #{logged_user.login}" %></a></li>
-            <li><%= link_to "Users", users_path %></li>
-            <li id="fat-menu" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Settings", edit_user_path(logged_user)%></li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to "Sign out", logout_path, method: "delete" %>
-                </li>
-              </ul>
-            </li>
-          <% else %>
-            <li><%= link_to "Sign in", login_path %></li>
-          <% end %>
-        </ul>
-    </div>
-  </div>
+<div class="masthead white-text">
+  <ul class="nav nav-pills pull-right">
+    <li><h4><%=  "Hello #{logged_user.login}" %></h4></li>
+    <li><%= link_to "Users", users_path %></li>
+    <li><%= link_to "Settings", edit_user_path(logged_user)%></li>
+    <li><%= link_to "Sign out", logout_path, method: "delete" %></li>
+  </ul>
+  <%= link_to image_tag('logo.png', size: '250x35'), users_path, id: "logo2", class: 'logo2' %>
+
 </div>
+

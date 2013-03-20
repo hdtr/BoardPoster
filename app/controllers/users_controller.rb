@@ -1,16 +1,35 @@
 class UsersController < ApplicationController
 
   def create
-    @user = User.new(params[:user])
-    @user.password = params[:user][:password]
-    @user.confirmation_code = Base64.encode64(params[:user][:login]).strip
-    if @user.save
-      UserMailer.activation_email(@user).deliver
-      flash[:notice] = 'Sucessfully registered, please confirm email to login'
+    if params[:commit] == 'Go back'
       redirect_to root_path
     else
-      flash[:notice] = "There were some errors: #{@user.errors.full_messages}"
-      render 'new'
+      if recaptcha_valid? || 1==1
+
+        @user = User.new(params[:user])
+        @user.password = params[:user][:password]
+        @user.confirmation_code = Base64.encode64(params[:user][:login]).strip
+        if @user.save
+          UserMailer.activation_email(@user).deliver
+          flash[:notice] = "Sucessfully registered #{@user.login}, please confirm email #{@user.email} to login"
+          redirect_to root_path
+        else
+          process_validations_errors
+          redirect_to register_path
+        end
+      else
+        flash[:error] = "Wrong code!"
+        redirect_to register_path
+      end
+    end
+  end
+
+  def process_validations_errors
+    flash[:error] = []
+    @user.errors.messages.each do |key, value|
+      value.each do |v|
+        flash[:error] << "#{key} #{v}"
+      end
     end
   end
 
@@ -29,22 +48,26 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
-    index
-    render 'index'
+    flash[:notice] = "User deleted"
+    log_out
+    redirect_to login_path
   end
 
   def update
-    @user = User.find_by_id(params[:id])
+    if params[:commit] == 'Go back'
+      redirect_to users_path
+    else
+      @user = User.find_by_id(params[:id])
       if @user.update_attributes(params[:user])
         flash[:notice] = "Updated"
         log_in @user
         redirect_to users_path
       else
-        flash[:error] = "Error! #{@user.errors.full_messages}"
+        process_validations_errors
         redirect_to :back
       end
     end
+  end
 
 
   def verify_email

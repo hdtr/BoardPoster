@@ -1,0 +1,280 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+
+
+html,
+body {
+    height: 100%;
+    background-color: #323B55;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: 60px;
+}
+#footer {
+    background-color: #f5f5f5;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.container {
+    width: auto;
+    max-width: 680px;
+}
+.container .credit {
+    margin: 20px 0;
+}
+
+.white-text{
+    color: white;
+}
+.form-signin {
+    max-width: 300px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin input[type="text"],
+.form-signin input[type="password"] {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 15px;
+    padding: 7px 9px;
+}
+
+/*Pagination style*/
+
+.pagination {
+    background: white;
+    cursor: default;
+    clear:both;
+    text-align:right;
+    font-size: 12px;
+    margin: 2px 2px 2px 0;
+    padding:2px 2px 0px 5px;
+    /*self-clearing method: */
+
+}
+.pagination .rows {
+    line-height: 10px;
+}
+.pagination a, p, .pagination span, .pagination em {
+    padding: 0.3em 0.5em;
+    display:inline-block;
+    margin-right: 1px; }
+.pagination .disabled {
+    color: #999999;
+    border: 1px solid #dddddd; }
+.pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #2e6ab1;
+    color: white;
+    border: 1px solid #2e6ab1; }
+.pagination a, p {
+    text-decoration: none;
+    color: #105cb6;
+    border: 1px solid #9aafe5; }
+.pagination a:hover, .pagination a:focus {
+    color: #000033;
+    border-color: #000033; }
+.pagination .page_info {
+    background: #2e6ab1;
+    color: white;
+    padding: 0em 0.6em;
+    width: 22em;
+    margin-bottom: 0.3em;
+    text-align: center; }
+.pagination .page_info b {
+    color: #000033;
+    background: #6aa6ed;
+    padding: 0.0em; }
+.pagination:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden; }
+* html .pagination {
+    height: 1%; }
+*:first-child + html .pagination {
+    overflow: hidden; }
+
+/*Tables*/
+
+table.table{
+    font-family:Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 1.0em;
+    text-align:center;
+    border-collapse:collapse;
+    width:100%;
+}
+
+.table tr{
+    font-family:Arial;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 1.8em;
+}
+.table thead th{
+    padding:6px 10px;
+    text-transform:uppercase;
+    color:#444;
+    font-weight:bold;
+    text-shadow:1px 1px 1px #fff;
+    border-bottom:5px solid #444;
+}
+.table thead th:empty{
+    background:transparent;
+    border:none;
+}
+.table thead :nth-child(2),
+.table tfoot :nth-child(2){
+    background-color: #7FD2FF;
+}
+.table tfoot :nth-child(2){
+    -moz-border-radius:0px 0px 0px 5px;
+    -webkit-border-bottom-left-radius:5px;
+    border-bottom-left-radius:5px;
+}
+.table thead :nth-child(2){
+    -moz-border-radius:5px 0px 0px 0px;
+    -webkit-border-top-left-radius:5px;
+    border-top-left-radius:5px;
+}
+.table thead :nth-child(3),
+.table tfoot :nth-child(3){
+    background-color: #45A8DF;}
+.table thead :nth-child(4),
+.table tfoot :nth-child(4){
+    background-color: #2388BF;
+}
+.table thead :nth-child(5),
+.table tfoot :nth-child(5){
+    background-color: #096A9F;
+}
+.table thead :nth-child(5){
+    -moz-border-radius:0px 5px 0px 0px;
+    -webkit-border-top-right-radius:5px;
+    border-top-right-radius:5px;
+}
+.table tfoot :nth-child(5){
+    -moz-border-radius:0px 0px 5px 0px;
+    -webkit-border-bottom-right-radius:5px;
+    border-bottom-right-radius:5px;
+}
+.table tfoot td{
+    font-size:38px;
+    font-weight:bold;
+    padding:15px 0px;
+    text-shadow:1px 1px 1px #fff;
+}
+.table tbody td{
+    padding:4px;
+    text-align: center;
+}
+.table tbody tr:nth-child(4) td{
+    font-size:18px;
+    font-weight:bold;
+}
+.table tbody td:nth-child(even){
+    background-color:#444;
+    color:#444;
+    border-bottom:1px solid #444;
+    background:-webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.39, rgb(189,189,189)),
+        color-stop(0.7, rgb(224,224,224))
+    );
+    background:-moz-linear-gradient(
+        center bottom,
+        rgb(189,189,189) 39%,
+        rgb(224,224,224) 70%
+    );
+    text-shadow:1px 1px 1px #fff;
+}
+.table tbody td:nth-child(odd){
+    background-color:#555;
+    color:#f0f0f0;
+    border-bottom:1px solid #444;
+    background:-webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.39, rgb(85,85,85)),
+        color-stop(0.7, rgb(105,105,105))
+    );
+    background:-moz-linear-gradient(
+        center bottom,
+        rgb(85,85,85) 39%,
+        rgb(105,105,105) 70%
+    );
+    text-shadow:1px 1px 1px #000;
+}
+.table tbody td:nth-last-child(1){
+    border-right:1px solid #222;
+}
+.table tbody th{
+    color:#696969;
+    background-color:#333;
+    line-height: 40px;
+    text-align:center;
+    font-size: 24px;
+    padding:0px 20px;
+    border-right:1px solid #aaa;
+    border-left: 1px solid #aaa;
+}
+.pagination_total{
+
+    margin-bottom: 80px;
+}
+
+.masthead {
+    background-color: #ffb300;
+}
+

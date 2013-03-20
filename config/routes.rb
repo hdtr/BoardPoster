@@ -1,6 +1,7 @@
 BoardPoster::Application.routes.draw do
 
   root to:  'sessions#new'
+  match '/users/:id', to: 'users#destroy', via: :get
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
@@ -11,8 +12,10 @@ BoardPoster::Application.routes.draw do
   match '/:id/:code', to: 'users#verify_email'
   match '/register', to: 'users#new'
 
-  match '/login', to: 'sessions#new'
+  match '/login', to: 'sessions#new', via: :get
+  match '/login', to: 'sessions#create', via: :post
   match '/logout', to: 'sessions#destroy', via: :delete
+  match '/logout', to: 'sessions#destroy', via: :get
 
   #match ':controller/:action' => ':controller#:action'
 
