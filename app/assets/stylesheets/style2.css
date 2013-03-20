@@ -300,9 +300,15 @@ table.table{
 >>>>>>> c12b884... added rounder corners, fine-tuned some divs, removed border around footer
 }
 
-#logo2 {
-    display: inline-block;
+.logo {
     margin-bottom: 40px;
+
 }
 
+.small-img{
+    width: 250px;
+    height: 40px;
+    padding-bottom: 5px;
+    padding-top: 7px;
+}
 
