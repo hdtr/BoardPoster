@@ -1,0 +1,26 @@
+Welcome to BoardPoster
+
+Boardposter is a project designed to put a single post at specified time on specified board as user.
+
+Of course it won't be another spamming machine as it's not my purpose, it's more like (self)educational project
+as it gives me various interesting problems to solve from the beginning without overwhelming dulness of making another
+pure hello world equivalent.
+
+Feel free to point out any bugs/wrong patterns and so on, that's the main reason of making it public.
+
+
+======================================================================================================================
+
+
+Installation:
+
+As it's simple, typical Rails app everything goes as usual, with two small caveats:
+
+1. Clone project.
+2. $ bundle install
+   I left postgresql as DB, so if you neither have it nor want to install it you have to change adapter to another in:
+    config/database.yml
+3. $ rake db:schema:load
+4. To get verification email after registration you have to fill configuration at the bottom (config.action_mailer) in:
+    config/environments/[RAILS_ENV].rb
+5. $ rails s
