@@ -1,0 +1,7 @@
+if($('#edit_box').is(':visible')){
+    $('#edit_box').fadeOut('slow',function() {$(this).remove()});
+}
+else {
+    $('#body').prepend('<div id="edit_box" class="box"  style="display: none"><%=j render 'edit' %></div>');
+    $('#edit_box').fadeIn('slow');
+}

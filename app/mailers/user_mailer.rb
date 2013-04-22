@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "login@domain"
+  default from: "sec.rails@gmail.com"
 
   def activation_email(user)
     @user = user

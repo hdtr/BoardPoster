@@ -1,48 +1,35 @@
 class SessionsController < ApplicationController
 
-  include Rack::Recaptcha::Helpers
+  before_filter :load
 
-  def new
+  def load
+    @user ||= User.new
+    @users ||= User.order('created_at DESC').page params[:page]
   end
+
 
   def create
-    begin
-      if params[:commit] == "Register"
-        redirect_to register_path
-      else
-        # refactor that if/if/if/if
-        if  params[:session][:login].empty?
-        raise "Login can't be blank"
+    if User.find_by_login(params[:session][:login])
+       @user = User.find_by_login(params[:session][:login])
+       if @user.authenticate(params[:session][:password])
+         if @user.confirmed?
+           log_in(@user)
+           flash[:notice] = 'You have successfully logged in!'
+         else
+           flash[:error] = 'You have not confirmed email!'
+           end
+       else
+         flash[:error] = 'Wrong password!'
         end
-        @user = User.find_by_login(params[:session][:login])
-        if @user.nil?
-          raise "User #{params[:session][:login]} not found"
-        end
-        if @user.authenticate(params[:session][:password])
-          if confirmed_email?
-
-            log_in @user
-            redirect_to users_url
-          else
-            flash[:error] = "Error! #{@user.errors.full_messages}"
-            render 'new'
-          end
-        else
-          flash[:error] = "Email not verified!"
-          redirect_to login_path
-        end
-      end
-
-    rescue => er
-      flash[:error] = "Errors: #{er.message}"
-      redirect_to :back
-        end
-
+    else
+      flash[:error] = 'Wrong login and/or password!'
+    end
   end
+
 
   def destroy
     log_out
-    redirect_to root_url
+    flash[:notice] = 'You have logged out!'
   end
 
 end

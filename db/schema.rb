@@ -13,6 +13,35 @@
 
 ActiveRecord::Schema.define(:version => 20130319123710) do
 
+  create_table "branches", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "tree_id",    :null => false
+    t.datetime "created_on"
+    t.datetime "updated_on"
+  end
+
+  create_table "comments", :id => false, :force => true do |t|
+  end
+
+  create_table "forests", :force => true do |t|
+    t.string   "name"
+    t.string   "meta_title"
+    t.string   "meta_keyword"
+    t.datetime "created_on"
+    t.datetime "updated_on"
+  end
+
+  create_table "forests_lakes", :id => false, :force => true do |t|
+    t.integer "forest_id", :null => false
+    t.integer "lake_id",   :null => false
+  end
+
+  create_table "lakes", :force => true do |t|
+    t.string   "title",      :null => false
+    t.datetime "created_on"
+    t.datetime "updated_on"
+  end
+
   create_table "payloads", :force => true do |t|
     t.string   "login"
     t.string   "password_hash"
@@ -22,6 +51,34 @@ ActiveRecord::Schema.define(:version => 20130319123710) do
     t.string   "message"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "rocks", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "forest_id",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roots", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "tree_id",    :null => false
+    t.datetime "created_on"
+    t.datetime "updated_on"
+  end
+
+  create_table "trees", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "forest_id",  :null => false
+    t.datetime "created_on"
+    t.datetime "updated_on"
+  end
+
+  create_table "trunks", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "tree_id",    :null => false
+    t.datetime "created_on"
+    t.datetime "updated_on"
   end
 
   create_table "users", :force => true do |t|

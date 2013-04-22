@@ -1,33 +1,5 @@
-<h1>Users Listing:</h1>
+<h1 id='body_heading'>Users Listing:</h1>
 
-<table class='table'>
-  <tr>
-    <th>Id</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
+<div id='paginator'><%= paginate @users, remote: true %></div>
 
-  <% @users.each do |u| %>
-      <tr>
-        <td><%= u.id %></td>
-        <td><%= u.login %></td>
-        <td><%= u.email %></td>
-        <% if logged_user?(u) %>
-            <td><%= link_to "Edit", edit_user_path(u) %></td>
-            <td><%= link_to "Delete", u%>
-        <% else %>
-            <td></td>
-            <td></td>
-        <% end %>
-      </tr>
-  <% end %>
-
-</table>
-<div class='pagination pagination_total'>
-  <p class='pagination page-info'><%= page_entries_info @users %></p><br/>
-  <%= will_paginate @users, class: 'pagination' %>
-  <br/>
-  <p class='pagination rows'>Rows per page: <%= render 'paginationamount' %></p>
-</div>
+<div id='main_table'><%= render 'user' %> </div>

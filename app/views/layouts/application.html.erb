@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag 'bootstrap' %>
-  <%= stylesheet_link_tag 'bootstrap-responsive' %>
-  <%= stylesheet_link_tag 'style2' %>
-  <%= csrf_meta_tags %>
-  <%= render 'layouts/shim' %>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %>
 </head>
 
 <body>
 
-<div id="wrap">
-  <div class="container white-text">
-    <% if logged_in? %>
-        <%= render 'layouts/header' %>
-    <% else %>
-        <%= render 'layouts/header_not_logged' %>
-    <% end %>
-    <%= render 'layouts/error_messages' %>
-    <%= yield %>
-  </div>
-</div>
-<div id="footer">
-  <div class="container text-right">
-    <p id="" class="muted credit">BoardPoster v0.3</p>
-  </div>
-</div>
+    <header>
+      <%= render 'layouts/header' %>
 
-<%= javascript_include_tag 'bootstrap' %>
+      <div id='register_box' class='box'>
+        <%= render 'users/new' unless logged_in? %>
+      </div>
+    </header>
+    <div id='body'>
+      <div id='flash_message'></div>
+        <%= yield %>
+      </div>
+
+
+    <footer>
+      <div class="container text-right">
+        <p class="muted credit">BoardPoster v0.3</p>
+      </div>
+    </footer>
+
+    <%= javascript_include_tag 'application' %>
+
 </body>
 
 </html>

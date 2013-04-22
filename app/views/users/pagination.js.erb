@@ -1,0 +1,3 @@
+$('#users').html('<%=j render @users %>');
+$('#paginator').html('<%=j (paginate(@users, :remote => true).to_s) %>');
+<%= flash[:error] = 'fl' %>

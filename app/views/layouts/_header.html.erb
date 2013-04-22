@@ -1,12 +1,9 @@
-<div class="masthead white-text">
-  <ul class="nav nav-pills pull-right">
-
-    <li><h4><%=  "Hello #{logged_user.login}" %></h4></li>
-    <li><%= link_to "Users", users_path %></li>
-    <li><%= link_to "Settings", edit_user_path(logged_user)%></li>
-    <li><%= link_to "Sign out", logout_path, method: "delete" %></li>
-  </ul>
-  <%= image_tag('logo.png', size: '250x35', class: 'muted small-img') %>
-
-</div>
+<%= image_tag((asset_path 'logo.png'), alt: 'BoardPoster', id: 'logo_img' ) %>
+<nav id='login_box'>
+    <% if logged_in? %>
+        <%= render 'sessions/current' %>
+    <% else %>
+        <%= render 'sessions/create' %>
+    <% end %>
+</nav>
 

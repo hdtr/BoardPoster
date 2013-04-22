@@ -1,20 +1,18 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-gem 'therubyracer', require: 'v8'
 gem 'pg'
 gem 'thin'
 gem 'bcrypt-ruby', '~> 3.0.1'
-gem 'bootstrap-sass', '~> 2.3.0.1'
-gem 'sass', '~> 3.2.7'
-gem 'will_paginate', '~> 3.0.4'
+gem 'kaminari'
 gem 'rack-recaptcha', :require => 'rack/recaptcha'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'jquery-rails'
+  gem 'therubyracer', require: 'v8'
+  gem 'client_side_validations'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -22,7 +20,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,0 +1,4 @@
+$('#main_table').html('<%=j render 'user' %>');
+$('#paginator').html('<%=j (paginate(@users, :remote => true).to_s) %>');
+
+

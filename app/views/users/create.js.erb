@@ -1,0 +1,15 @@
+<% if @user.errors.any? %>
+
+Recaptcha.reload();
+
+<% else %>
+
+$('#register_box').fadeOut('slow');
+
+$('#main_table').fadeOut('slow', function(){
+    $(this).html('<%= escape_javascript(render 'users/user') %>');
+    $(this).fadeIn('slow');
+});
+
+<% end %>
+

@@ -4,7 +4,7 @@ module SessionsHelper
 
   def log_in(user)
     cookies.permanent[:token] = user.token
-    self.logged_user = user
+    @logged_user = user
   end
 
   def logged_in?
@@ -28,13 +28,5 @@ module SessionsHelper
     @logged_user ||= User.find_by_token(cookies[:token])
   end
 
-  def visited_page
-    #TODO store visited link
-    root_path
-  end
-
-  def confirmed_email?
-    @user ? @user.confirmed : false
-  end
 
 end

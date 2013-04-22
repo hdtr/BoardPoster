@@ -1,6 +1,7 @@
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+
   attr_accessor :password_confirmation, :password, :email_confirmation
   attr_accessible :login, :password, :password_confirmation, :email, :email_confirmation
 
@@ -8,7 +9,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :login
   validates_presence_of :login
-  validates_length_of :password_confirmation, :minimum => 5
+  validates_length_of :password_confirmation, minimum: 6
   validates_presence_of :password
   validates_confirmation_of :password
   validates_presence_of :email
