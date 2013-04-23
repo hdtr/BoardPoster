@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
            flash[:notice] = 'You have successfully logged in!'
          else
            flash[:error] = 'You have not confirmed email!'
+           render 'users/send_confirmation'
            end
        else
          flash[:error] = 'Wrong password!'

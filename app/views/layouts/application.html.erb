@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag 'application' %>
@@ -10,22 +11,21 @@
 <body>
 
     <header>
-      <%= render 'layouts/header' %>
-
-      <div id='register_box' class='box'>
+        <%= render 'layouts/header' %>
+        <div id='register_box' class='box'>
         <%= render 'users/new' unless logged_in? %>
-      </div>
+        </div>
     </header>
+
     <div id='body'>
-      <div id='flash_message'></div>
+        <!--TODO: is it necessary?-->
+        <div id='flash_message'><div id='flash_<%= flash.keys.first.to_s %>'><%=h flash[flash.keys.first] %></div></div>
         <%= yield %>
       </div>
 
 
     <footer>
-      <div class="container text-right">
-        <p class="muted credit">BoardPoster v0.3</p>
-      </div>
+        <p>BoardPoster v0.3</p>
     </footer>
 
     <%= javascript_include_tag 'application' %>

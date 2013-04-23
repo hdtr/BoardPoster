@@ -56,7 +56,7 @@ header input[id*='session'] {
 }
 
 
-#register_box, #edit_box {
+#register_box, #edit_box, #msg_box {
     top: 10em;
     width: 24em;
     left: 50%;
@@ -177,3 +177,7 @@ footer {
     clear: left;
 }
 
+/* TODO: Add some @media queries or rather some better way of setting 100% height empty div to push down footer*/
+#wrapper {
+    height: 20em;
+}

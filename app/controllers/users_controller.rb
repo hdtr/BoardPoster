@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
 
   include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::OutputSafetyHelper
+  include UsersHelper
 
   def create
     @user = User.new(params[:user])
     @users ||= User.order('created_at DESC').page params[:page]
     if recaptcha_valid?
         @user.password = params[:user][:password]
-        @user.confirmation_code = Base64.encode64(params[:user][:login]).strip
+        create_conf_code(@user)
         if @user.save
-          UserMailer.activation_email(@user).deliver
+          #TODO: check here if mail has been sent successfully
+          send_conf
           flash[:notice] = "Thank you for registering <strong> #{params[:user][:login]}</strong>, please confirm your email <strong>#{params[:user][:email]}</strong> so you can log in. "
         else
           print_errors
@@ -18,8 +21,14 @@ class UsersController < ApplicationController
       else
         @user.errors[:Recaptcha] << 'is wrong'
         print_errors
-
       end
+  end
+
+  def send_conf
+    @user = User.find_by_id(params[:id])
+    UserMailer.activation_email(@user).deliver
+    flash[:notice] = 'Email has been sent, please check your email'
+    redirect_to :root
   end
 
   def index
@@ -32,14 +41,14 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:notice] = "User deleted"
+    flash[:notice] = 'User deleted'
     log_out
   end
 
   def update
       @user ||= User.find_by_id(params[:id])
       if @user.update_attributes(params[:user])
-        flash[:notice] = "Updated"
+        flash[:notice] = 'Updated'
         log_in @user
       else
         print_errors
@@ -49,16 +58,18 @@ class UsersController < ApplicationController
   def verify_email
     @user = User.find_by_id(params[:id])
     if @user.confirmed
-      flash[:notice] = 'boo'
       flash[:notice] = 'Account has been already confirmed'
+      redirect_to :root
     elsif params[:code] == @user.confirmation_code
       @user.confirmed = true
       @user.save(validate: false)
       flash[:notice] = 'Thank you for verifying email address, you can login now'
+      redirect_to :root
     else
-      flash[:error] = 'Wrong confirmation code!'
+      flash[:error] = raw('Wrong confirmation code!<br />')
+      flash[:error] << raw("#{self.class.helpers.link_to('Click here', send_conf_path(params))} to send another confirmation email")
+      redirect_to :root
     end
   end
-
 
 end

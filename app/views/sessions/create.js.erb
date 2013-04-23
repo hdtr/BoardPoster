@@ -1,11 +1,11 @@
 <% if logged_in? %>
 
 $('#main_table').fadeOut('slow', function(){
-    $(this).html('<%= escape_javascript(render 'users/user') %>');
+    $(this).html('<%=j render 'users/user' %>');
     $(this).fadeIn('slow');
 });
 $('#login_box').fadeOut('slow', function(){
-    $(this).html('<%= escape_javascript(render 'current') %>');
+    $(this).html('<%=j render 'current' %>');
     $(this).fadeIn('slow');
 });
 

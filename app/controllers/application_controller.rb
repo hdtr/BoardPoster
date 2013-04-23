@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
 
-  after_filter :flash_to_headers, only: [:create, :destroy, :update, :edit, :verify_email]
+  after_filter :flash_to_headers, only: [:create, :destroy, :update, :verify_email]
   before_filter :set_cache_buster
 
 

@@ -2,12 +2,13 @@ BoardPoster::Application.routes.draw do
 
   root to:  'users#index'
 
+  resources :users
   resources :sessions, only: [:create, :destroy]
 
   match '/help', to: 'static#help'
 
   match 'verify_email/:id/:code', to: 'users#verify_email'
-
+  match 'send_code', to: 'users#send_conf', as: :send_conf
 
   #match ':controller/:action' => ':controller#:action'
 
