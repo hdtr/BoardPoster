@@ -13,6 +13,7 @@ group :assets do
   gem 'jquery-rails'
   gem 'therubyracer', require: 'v8'
   gem 'client_side_validations'
+  gem 'sass-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

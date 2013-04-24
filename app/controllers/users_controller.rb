@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @users ||= User.order('created_at DESC').page params[:page]
+    @users = User.order('created_at DESC').page params[:page]
     if recaptcha_valid?
         @user.password = params[:user][:password]
         create_conf_code(@user)
@@ -66,6 +66,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Thank you for verifying email address, you can login now'
       redirect_to :root
     else
+      #TODO: html directly from controller? smells fishy...
       flash[:error] = raw('Wrong confirmation code!<br />')
       flash[:error] << raw("#{self.class.helpers.link_to('Click here', send_conf_path(params))} to send another confirmation email")
       redirect_to :root

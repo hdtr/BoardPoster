@@ -1,0 +1,163 @@
+// Mixins, variables and so on
+
+@mixin header_styling
+  text-decoration: none
+  border-radius: 1em
+  color: white
+  display: inline-block
+
+@mixin flash($bkg, $brd)
+  background: $bkg
+  display: inline-block
+  letter-spacing: 0.1em
+  text-align: center
+  border: $brd solid 0.25em
+  border-radius: 1em
+  padding: 0.5em
+  text-align: center
+  width: 30em
+
+// Styles
+
+header
+  font: italic 1em Georgia, times, sans-serif
+  background: #000000
+  height: 2em
+  padding: 0 15em 0 20em
+  border-bottom-left-radius: 10em
+  border-bottom-right-radius: 10em
+
+  a
+    @include header_styling
+    margin: 0.15em
+    &:hover
+      background: #ee3310
+
+  ul
+    @include header_styling
+    margin: 0
+    float: right
+
+  li
+    @include header_styling
+    padding: 0 0.5em 0 0.5em
+
+  #menu
+    margin: 0.3em
+
+  input[id*='session']
+    border-radius: 1em
+    font-weight: bold
+    text-align: center
+    letter-spacing: 0.2em
+    color: #043100
+    height: 1.2em
+    width: 10em
+
+#header_greet
+  @include header_styling
+
+.box
+  background: #000000
+  border-radius: 1em
+  border: 0.25em solid #ee3310
+  padding: 1em
+  position: absolute
+  top: 6em
+  color: white
+  text-align: center
+
+#logo_img
+  float: left
+  height: 1.5em
+  margin-top: 0.25em
+
+#register_box, #edit_box, #msg_box
+  top: 10em
+  width: 24em
+  left: 50%
+  margin-left: -12em
+
+#register_box ul
+  padding: 1em
+  margin: 0
+
+#register_form
+  input:not([type*='submit'])
+    border-radius: 1em
+    text-align: left
+    font-weight: bold
+    letter-spacing: 0.1em
+    padding: 0 0 0 1.5em
+    height: 1.5em
+    width: 20em
+
+  li
+    margin-left: 0
+    padding: 0.5em
+    list-style: none
+    display: inline-block
+    float: none
+
+.btn
+  background: #808080
+  padding: 0.5em
+  color: #ffffff
+  float: right
+  margin: 0.5em 1em
+  text-decoration: none
+  border-radius: 0.5em
+
+  &:hover
+    background: #303410
+
+#flash_message
+  text-align: center
+
+#flash_error
+  @include flash(#ff0000, #000000)
+
+#flash_notice
+  @include flash(#000000, #ff0000)
+
+table
+  background-color: #000000
+  color: #ffffff
+  text-align: center
+  padding: 2em
+  width: 50%
+  border-radius: 5em
+  margin:
+    left: 25%
+    right: 25%
+
+  tr:nth-child(odd)
+    background: #202020
+
+body
+  margin: 0
+  text-align: center
+  font: 1em Georgia, times, sans-serif
+  background: -moz-linear-gradient(center top, #eeeeee, #202020)
+  background: -webkit-gradient(linear, center top, center bottom, from(#eeeeee), to(#202020))
+
+#body_heading
+  clear: both
+
+footer
+  color: #808080
+  clear: both
+
+.pagination
+  clear: both
+  color: #909090
+
+#login_box
+  padding: 0.15em
+
+#main_table
+  clear: left
+
+/* TODO: Add some @media queries or rather some better way of setting 100% height empty div to push down footer*/
+#wrapper
+  height: 20em

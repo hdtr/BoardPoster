@@ -7,7 +7,7 @@ Recaptcha.reload();
 $('#register_box').fadeOut('slow');
 
 $('#main_table').fadeOut('slow', function(){
-    $(this).html('<%= escape_javascript(render 'users/user') %>');
+    $(this).html('<%= escape_javascript(render @users) %>');
     $(this).fadeIn('slow');
 });
 
