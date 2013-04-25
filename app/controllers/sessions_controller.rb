@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
 
-  before_filter :load
+  before_filter :load, :set_users
+
+
 
   def load
     @user ||= User.new
-    @users ||= User.order('created_at DESC').page params[:page]
   end
-
 
   def create
     if User.find_by_login(params[:session][:login])

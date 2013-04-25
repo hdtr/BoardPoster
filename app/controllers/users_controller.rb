@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   include ActionView::Helpers::OutputSafetyHelper
   include UsersHelper
 
+  before_filter :set_users, only: [:create, :index, :destroy, :update]
+
+
   def create
     @user = User.new(params[:user])
-    @users = User.order('created_at DESC').page params[:page]
     if recaptcha_valid?
         @user.password = params[:user][:password]
         create_conf_code(@user)
@@ -32,7 +34,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users =  User.order('created_at DESC').page(params[:page])
   end
 
   def edit
@@ -72,5 +73,7 @@ class UsersController < ApplicationController
       redirect_to :root
     end
   end
+
+
 
 end

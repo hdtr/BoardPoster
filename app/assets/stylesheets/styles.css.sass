@@ -6,8 +6,9 @@
   color: white
   display: inline-block
 
-@mixin flash($bkg, $brd)
+@mixin flash($bkg, $brd, $col)
   background: $bkg
+  color: $col
   display: inline-block
   letter-spacing: 0.1em
   text-align: center
@@ -115,10 +116,11 @@ header
   text-align: center
 
 #flash_error
-  @include flash(#ff0000, #000000)
+  @include flash(#ff0000, #000000, #000000)
 
 #flash_notice
-  @include flash(#000000, #ff0000)
+  @include flash(#000000, #ff0000, #ffffff)
+
 
 table
   background-color: #000000

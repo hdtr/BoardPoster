@@ -28,5 +28,4 @@ module SessionsHelper
     @logged_user ||= User.find_by_token(cookies[:token])
   end
 
-
 end
