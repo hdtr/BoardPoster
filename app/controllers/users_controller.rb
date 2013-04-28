@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   before_filter :set_users, only: [:create, :index, :destroy, :update]
 
-
   def create
     @user = User.new(params[:user])
     if recaptcha_valid?
@@ -19,7 +18,6 @@ class UsersController < ApplicationController
         else
           print_errors
         end
-
       else
         @user.errors[:Recaptcha] << 'is wrong'
         print_errors
