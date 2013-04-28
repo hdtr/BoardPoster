@@ -1,0 +1,22 @@
+!!! html
+%html
+  %head
+    %title
+      = full_title(yield(:title))
+    = stylesheet_link_tag 'application'
+    = csrf_meta_tags
+    = render 'layouts/shim'
+  %body
+    %header
+      = render 'layouts/header'
+      %div.box#register_box
+        = render 'users/new' unless logged_in?
+    #body
+      #flash_message
+        %div{id: "flash_#{flash.keys.first}"}
+          =h flash[flash.keys.first]
+      = yield
+    #footer
+      %p
+        BoardPoster v0.3
+  = javascript_include_tag 'application'

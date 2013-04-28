@@ -2,8 +2,6 @@ class SessionsController < ApplicationController
 
   before_filter :load, :set_users
 
-
-
   def load
     @user ||= User.new
   end
@@ -26,7 +24,6 @@ class SessionsController < ApplicationController
       flash[:error] = 'Wrong login and/or password!'
     end
   end
-
 
   def destroy
     log_out

@@ -1,0 +1,7 @@
+= form_for(:session, url: sessions_path, remote: true) do |f|
+  %ul
+    %li= f.text_field :login, placeholder: 'Login'
+    %li= f.password_field :password, placeholder: 'Password'
+    %li= link_to_submit "Log in"
+    %li= link_to 'Register', new_user_path(@user), remote: true
+

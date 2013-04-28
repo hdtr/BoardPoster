@@ -2,11 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   include SessionsHelper
 
-  after_filter :flash_to_headers, only: [:create, :destroy, :update, :verify_email]
-  before_filter :set_cache_buster
+  after_filter :flash_to_headers, only: [:create, :destroy, :update, :verify_email, :send_conf]
+  before_filter :set_cache_buster, except: [:send_conf, :verify_email]
   before_filter :copy_params_to_session
-
-
 
 # Method of flashing flash messages with ajax requests in Rails, source here: https://gist.github.com/linjunpop/3410235
 

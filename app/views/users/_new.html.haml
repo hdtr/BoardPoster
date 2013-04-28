@@ -1,0 +1,12 @@
+%h3
+  Register new user
+  = form_for User.new, html: {id: 'register_form'}, remote: true do |f|
+    %ul
+      %li= f.text_field :login, placeholder: 'Login'
+      %li= f.password_field :password, placeholder: 'Password (min 6 signs)'
+      %li= f.password_field :password_confirmation, placeholder: 'Password confirmation'
+      %li= f.text_field :email, placeholder: 'Email'
+      %li= f.text_field :email_confirmation, placeholder: 'Email confirmation'
+      %li= raw recaptcha_tag(:ajax)
+      %li= f.submit "Register!", class: 'btn'
+

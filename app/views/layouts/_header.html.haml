@@ -1,0 +1,6 @@
+= image_tag((asset_path 'logo.png'), alt: 'BoardPoster', id: 'logo_img' )
+%nav#login_box
+  - if logged_in?
+    = render 'sessions/current'
+  - else
+    = render 'sessions/create'

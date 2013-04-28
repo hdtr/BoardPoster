@@ -31,12 +31,13 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
-    client_side_validations (3.2.5)
     daemons (1.1.9)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    haml (4.0.2)
+      tilt
     hike (1.2.1)
     i18n (0.6.4)
     journey (1.0.4)
@@ -116,7 +117,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.1)
-  client_side_validations
+  haml
   jquery-rails
   kaminari
   pg

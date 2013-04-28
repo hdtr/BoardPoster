@@ -1,0 +1,14 @@
+-if logged_in?
+  :erb
+  :javascript
+    $('#main_table').fadeOut('slow', function(){
+      $(this).html('<%=j render 'users/user' %>');
+      $(this).fadeIn('slow');
+    });
+    $('#login_box').fadeOut('slow', function(){
+      $(this).html('<%=j render 'current' %>');
+      $(this).fadeIn('slow');
+    });
+    if($('#register_box').is(':visible')) {
+      $('#register_box').fadeOut('slow');
+    };

@@ -1,0 +1,16 @@
+-#TODO: is it better to use here erb as haml is unnecessary or stick to haml for consistency? If haml is better how to
+-#      remove redundant following line and get js without <script> tag?
+- unless logged_in?
+  :erb
+  :javascript
+    $('#main_table').fadeOut('slow', function(){
+        $(this).html('<%=j (render 'users/user') %>');
+        $(this).fadeIn('slow');
+    });
+    $('#login_box').fadeOut('slow', function(){
+        $(this).html('<%=j (render 'create') %>');
+        $(this).fadeIn('slow');
+    });
+    if($('#edit_box').is(':visible')) {
+        $('#edit_box').fadeOut('slow');
+    }

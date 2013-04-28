@@ -1,0 +1,18 @@
+%table
+  %tr
+    %th= 'Id    '
+    %th= 'Name  '
+    %th= 'Email '
+    %th= 'Edit  '
+    %th= 'Delete'
+  - @users.each do |u|
+    %tr
+      %td= u.id
+      %td= u.login
+      %td= u.email
+    - if logged_user?(u)
+      %td= link_to "Edit", edit_user_path(u), remote: true
+      %td= link_to "Delete", remote: true, method: :delete
+    - else
+      %td
+      %td

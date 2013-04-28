@@ -12,8 +12,10 @@ gem 'rack-recaptcha', :require => 'rack/recaptcha'
 group :assets do
   gem 'jquery-rails'
   gem 'therubyracer', require: 'v8'
-  gem 'client_side_validations'
+  #TODO: try following gem
+  #gem 'client_side_validations'
   gem 'sass-rails'
+  gem 'haml'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

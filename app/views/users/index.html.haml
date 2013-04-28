@@ -1,0 +1,7 @@
+%h1#body_heading
+  Users Listing:
+#paginator
+  = paginate @users, remote: true
+#main_table
+  = render 'user'
+= render 'pagination_amount'

@@ -1,6 +1,0 @@
-<ul>
-  <li><div id='header_greet'><%= link_to "Hello #{logged_user.login}", {controller: :'users', action: 'edit', id: params}, remote: true %></li>
-  <li><%= link_to "Settings", {controller: 'users', action: 'edit', id: params}, remote: true %></li>
-  <li><%= link_to "Log out", {controller: 'sessions', action: 'destroy', id: params}, method: :delete, remote: true %></li>
-</ul>
-

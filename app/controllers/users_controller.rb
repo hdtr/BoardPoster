@@ -27,14 +27,13 @@ class UsersController < ApplicationController
   end
 
   def send_conf
-    @user = User.find_by_id(params[:id])
+    @user = User.find_by_login(params[:session][:login])
     UserMailer.activation_email(@user).deliver
     flash[:notice] = 'Email has been sent, please check your email'
     redirect_to :root
   end
 
-  def index
-  end
+
 
   def edit
     @user ||= logged_user
@@ -73,7 +72,5 @@ class UsersController < ApplicationController
       redirect_to :root
     end
   end
-
-
 
 end

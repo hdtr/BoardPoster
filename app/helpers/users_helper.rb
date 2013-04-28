@@ -9,4 +9,5 @@ module UsersHelper
     user.confirmation_code = Base64.encode64(user.login).strip
   end
 
+
 end
